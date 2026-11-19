@@ -181,3 +181,8 @@ do are mine — which formats it opens, how it looks, and where the line sits be
 reader and a document suite. The code and the logic were written with
 [OpenCode](https://opencode.ai) assisting: it drafted, debugged and typed under my
 direction, and I reviewed every change before it went in.
+
+## Licence
+
+MIT. Fork it, change it, ship it — the only condition is keeping the copyright notice and
+the warranty disclaimer with the copy. See [LICENSE](LICENSE).
