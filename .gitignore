@@ -1,0 +1,17 @@
+# Build output
+build/
+dist/
+*.apk
+*.idsig
+
+# The signing key stays local. build.sh regenerates one on a fresh machine.
+*.keystore
+*.jks
+
+# Desktop test dependency (download command is in the README)
+tests/lib/
+
+# Editor and OS noise
+.idea/
+*.iml
+.DS_Store

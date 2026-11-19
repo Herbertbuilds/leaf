@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Adaptive icons are cropped by the launcher mask: keep the artwork inside the
+         66dp safe circle, centred on (54,54). -->
+    <group android:translateY="-8">
+    <path
+        android:fillColor="#66D9A8"
+        android:pathData="M54,32 C42,42 35,55 37,68 C39,79 46,83 54,83 C62,83 69,79 71,68 C73,55 66,42 54,32 Z" />
+    <path
+        android:strokeColor="#66D9A8"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:pathData="M54,83 L54,92" />
+    <path
+        android:strokeColor="#0F1214"
+        android:strokeWidth="2.6"
+        android:strokeLineCap="round"
+        android:pathData="M54,36 L54,80" />
+    </group>
+</vector>
