@@ -1,0 +1,43 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  parser-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # test.sh expects a self-built toolchain at $LEAF_TOOLCHAIN with a
+      # jdk-* directory and a kotlinc. Point both at what the runner provides.
+      - name: Assemble toolchain
+        run: |
+          set -euo pipefail
+          tc="$RUNNER_TEMP/leaf-toolchain"
+          mkdir -p "$tc"
+          curl -sSL -o "$RUNNER_TEMP/kotlin.zip" \
+            "https://github.com/JetBrains/kotlin/releases/download/v2.0.21/kotlin-compiler-2.0.21.zip"
+          unzip -q "$RUNNER_TEMP/kotlin.zip" -d "$tc"
+          ln -s "$JAVA_HOME" "$tc/jdk-17"
+          echo "LEAF_TOOLCHAIN=$tc" >> "$GITHUB_ENV"
+
+      # tests/lib/ is gitignored; test.sh only warns about the jar.
+      - name: Fetch kxml2
+        run: |
+          mkdir -p tests/lib
+          curl -sSL -o tests/lib/kxml2-2.3.0.jar \
+            "https://repo1.maven.org/maven2/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar"
+
+      - name: Run parser tests
+        run: ./test.sh
